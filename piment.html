@@ -53,7 +53,6 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
-        /* Glassmorphism Card Style */
         .glass-card {
             background: rgba(23, 10, 28, 0.7);
             backdrop-filter: blur(16px);
@@ -62,7 +61,6 @@
             box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.6);
         }
 
-        /* Card Flip 3D Animation */
         .flip-container {
             perspective: 1000px;
         }
@@ -88,7 +86,6 @@
             transform: rotateY(180deg);
         }
 
-        /* Glow effects */
         @keyframes pulse-soft {
             0%, 100% { opacity: 0.4; }
             50% { opacity: 0.8; }
@@ -97,7 +94,6 @@
             animation: pulse-soft 4s infinite ease-in-out;
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(157, 78, 221, 0.3); border-radius: 4px; }
@@ -105,7 +101,6 @@
 </head>
 <body class="flex flex-col min-h-screen justify-between items-center max-w-md mx-auto relative border-x border-white/5 shadow-2xl overflow-x-hidden">
 
-    <!-- FOND LUMINEUX DECORATIF -->
     <div class="fixed inset-0 pointer-events-none z-0">
         <div class="absolute top-10 left-1/2 -translate-x-1/2 w-72 h-72 bg-romance-purple/20 rounded-full blur-3xl ambient-glow"></div>
         <div class="absolute bottom-20 left-10 w-60 h-60 bg-romance-pink/15 rounded-full blur-3xl ambient-glow" style="animation-delay: 2s;"></div>
@@ -153,11 +148,10 @@
     <!-- CONTENU PRINCIPAL DES CATEGORIES -->
     <main class="w-full px-5 flex-1 flex flex-col justify-center z-10 py-2">
 
-        <!-- ================= ONGLET 1 : POSITION DU JOUR ================= -->
+        <!-- ONGLET 1 : POSITION DU JOUR -->
         <section id="positionTab" class="tab-content w-full flex flex-col items-center">
             <div class="glass-card w-full rounded-3xl p-5 border-white/10 relative overflow-hidden flex flex-col items-center text-center shadow-neon-pink/10">
                 
-                <!-- Badge d'intensité et calendrier -->
                 <div class="flex items-center justify-between w-full mb-3">
                     <span id="posIntensityTag" class="text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border">
                         Doux & Sensuel
@@ -172,9 +166,7 @@
                     </div>
                 </div>
 
-                <!-- SCHÉMA VECTORIEL ILLUSTRATIF -->
                 <div id="posSvgContainer" class="w-full h-44 rounded-2xl bg-gradient-to-b from-black/40 via-romance-purple/10 to-black/60 border border-white/10 flex items-center justify-center p-3 relative overflow-hidden my-1 shadow-inner">
-                    <!-- Dynamic SVG Illustration Container -->
                 </div>
 
                 <h2 id="posTitle" class="font-serif-romance text-2xl sm:text-3xl text-white italic font-bold mt-2 mb-1">
@@ -185,7 +177,6 @@
                     Assis face à face, enlacés au cœur de la nuit. Une position d'une extrême sensualité favorisant les baisers passionnés et la connexion des regards.
                 </p>
 
-                <!-- Astuce complicité -->
                 <div class="w-full bg-white/5 border border-white/5 rounded-2xl p-3 my-2 text-left">
                     <p class="text-[10px] uppercase font-semibold text-romance-pink flex items-center gap-1">
                         <i data-lucide="sparkle" class="w-3 h-3"></i> Conseil Sensuel
@@ -195,7 +186,6 @@
                     </p>
                 </div>
 
-                <!-- Compte à rebours de déblocage quotidien -->
                 <div class="w-full bg-gradient-to-r from-romance-purple/20 to-romance-pink/20 border border-romance-pink/30 rounded-2xl p-3 my-1 flex items-center justify-between text-left">
                     <div>
                         <p class="text-[10px] uppercase font-bold text-romance-pink flex items-center gap-1">
@@ -216,10 +206,8 @@
             </div>
         </section>
 
-        <!-- ================= ONGLET 2 : ACTION OU VÉRITÉ OSÉ ================= -->
+        <!-- ONGLET 2 : ACTION OU VÉRITÉ OSÉ -->
         <section id="avTab" class="tab-content w-full hidden flex-col items-center">
-            
-            <!-- Sélecteur à 2 choix -->
             <div class="w-full grid grid-cols-2 gap-2 mb-3">
                 <button onclick="setAVType('action')" id="btnTypeAction" class="py-2.5 rounded-2xl glass-card text-xs font-semibold transition-all flex items-center justify-center gap-2 border-romance-pink/50 text-white shadow-neon-pink/20">
                     <i data-lucide="flame" class="w-4 h-4 text-romance-pink"></i> Action (Piment)
@@ -229,10 +217,8 @@
                 </button>
             </div>
 
-            <!-- Carte interactive 3D à retourner -->
             <div class="flip-container w-full h-68 sm:h-72 cursor-pointer" id="avCardContainer" onclick="drawAVCard()">
                 <div class="flip-card">
-                    <!-- Face Avant (Masquée) -->
                     <div class="flip-front glass-card p-6 flex flex-col items-center justify-center text-center border-white/15">
                         <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-romance-pink/20 to-romance-purple/20 border border-white/10 flex items-center justify-center text-romance-pink mb-4 animate-pulse">
                             <i data-lucide="lock" class="w-7 h-7"></i>
@@ -241,7 +227,6 @@
                         <p class="text-xs text-white/50 mt-1">Touchez la carte pour piocher votre gage...</p>
                     </div>
 
-                    <!-- Face Arrière (Révélée) -->
                     <div class="flip-back glass-card p-5 flex flex-col items-center justify-between text-center border-romance-pink/30 shadow-neon-pink/20">
                         <div class="flex items-center justify-between w-full text-xs">
                             <span id="avCategoryLabel" class="text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider bg-romance-pink/20 text-romance-pink border border-romance-pink/30">
@@ -266,7 +251,7 @@
             </button>
         </section>
 
-        <!-- ================= ONGLET 3 : DÉFI QUOTIDIEN ================= -->
+        <!-- ONGLET 3 : DÉFI QUOTIDIEN -->
         <section id="defiTab" class="tab-content w-full hidden flex-col items-center">
             <div class="glass-card w-full rounded-3xl p-5 border-white/10 relative overflow-hidden flex flex-col items-center text-center shadow-neon-purple/10">
                 
@@ -291,7 +276,6 @@
                     Envoyez un message coquin à votre partenaire au cours de la journée pour décrire précisément l'envie ou la caresse qui vous attend ce soir.
                 </p>
 
-                <!-- Impact attendu -->
                 <div class="w-full bg-white/5 border border-white/5 rounded-2xl p-2.5 my-2 text-left">
                     <p class="text-[10px] uppercase font-semibold text-romance-purple flex items-center gap-1">
                         <i data-lucide="zap" class="w-3 h-3"></i> Effet Recherché
@@ -301,7 +285,6 @@
                     </p>
                 </div>
 
-                <!-- Compte à rebours du défi du jour -->
                 <div class="w-full bg-gradient-to-r from-romance-purple/20 to-romance-pink/20 border border-romance-purple/30 rounded-2xl p-3 my-1 flex items-center justify-between text-left">
                     <div>
                         <p class="text-[10px] uppercase font-bold text-romance-purple flex items-center gap-1">
@@ -320,7 +303,7 @@
 
     </main>
 
-    <!-- MODAL : FAVORIS DU COUPLE -->
+    <!-- MODAL : FAVORIS -->
     <div id="favoritesModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-5">
         <div class="glass-card max-w-sm w-full rounded-3xl p-5 border-white/20 max-h-[80vh] flex flex-col justify-between">
             <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
@@ -333,7 +316,6 @@
             </div>
 
             <div id="favoritesList" class="flex-1 overflow-y-auto space-y-2.5 my-2 pr-1 text-left">
-                <!-- JS Fill -->
             </div>
 
             <button onclick="toggleFavoritesModal()" class="w-full py-3 rounded-2xl bg-white/10 text-white text-xs font-semibold mt-3 hover:bg-white/20 transition-all">
@@ -342,14 +324,12 @@
         </div>
     </div>
 
-    <!-- PIED DE PAGE -->
     <footer class="w-full py-3 text-center z-10 text-[11px] text-white/30 font-light">
         Piment & Intimité • Créé avec amour pour votre couple
     </footer>
 
-    <!-- LOGIQUE JAVASCRIPT & BANQUE DE DONNÉES -->
+    <!-- LOGIQUE JAVASCRIPT REPARÉE ET COMPLÈTE -->
     <script>
-        // --- BASE DE DONNÉES SENSUELLE AVEC SILHOUETTES HUMAINES ANATOMIQUES ---
         const POSITIONS = [
             {
                 title: "L'Étreinte du Lotus",
@@ -373,28 +353,16 @@
                         </filter>
                     </defs>
                     <ellipse cx="150" cy="120" rx="95" ry="25" fill="rgba(157,78,221,0.1)"/>
-                    
-                    <!-- Partenaire 1 (Assis dos/profil gauche, silhouette rose) -->
                     <g filter="url(#glow)">
-                        <!-- Tête & Cou -->
                         <circle cx="118" cy="40" r="11" fill="url(#bodyPink)" stroke="#ff2a75" stroke-width="1.5"/>
-                        <!-- Buste & Dos -->
                         <path d="M 118,51 C 112,65 106,85 102,108 C 110,122 135,128 152,126 C 145,110 132,95 125,75 C 122,65 122,55 118,51 Z" fill="url(#bodyPink)" stroke="#ff2a75" stroke-width="1.5"/>
-                        <!-- Bras enlaçant -->
                         <path d="M 120,62 C 132,68 145,68 155,62 C 158,68 148,76 132,74 Z" fill="url(#bodyPink)"/>
-                        <!-- Jambe repliée -->
                         <path d="M 102,108 C 85,115 72,122 88,128 C 110,132 135,130 152,126 Z" fill="url(#bodyPink)" opacity="0.85"/>
                     </g>
-
-                    <!-- Partenaire 2 (Enlacé face/profil droit, silhouette violette) -->
                     <g filter="url(#glow)">
-                        <!-- Tête & Cou -->
                         <circle cx="146" cy="38" r="10.5" fill="url(#bodyPurple)" stroke="#e0aaff" stroke-width="1.5"/>
-                        <!-- Buste & Dos -->
                         <path d="M 146,48 C 152,60 160,80 156,104 C 142,120 120,126 106,122 C 118,105 128,88 135,68 C 140,58 142,52 146,48 Z" fill="url(#bodyPurple)" stroke="#e0aaff" stroke-width="1.5"/>
-                        <!-- Bras autour du cou -->
                         <path d="M 140,58 C 128,58 118,52 112,46 C 115,54 128,66 142,66 Z" fill="url(#bodyPurple)"/>
-                        <!-- Cuisses/Jambes enlacées autour du bassin -->
                         <path d="M 156,104 C 172,112 182,118 168,124 C 145,128 122,125 106,122 Z" fill="url(#bodyPurple)" opacity="0.85"/>
                     </g>
                 </svg>`
@@ -417,24 +385,15 @@
                         </linearGradient>
                     </defs>
                     <ellipse cx="150" cy="125" rx="100" ry="20" fill="rgba(255,42,117,0.08)"/>
-                    
-                    <!-- Partenaire Allongé sur le dos (Silhouette rose) -->
                     <g filter="url(#glow)">
                         <circle cx="65" cy="115" r="10.5" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
-                        <!-- Torse, Bassin & Jambes allongées -->
                         <path d="M 75,116 C 95,114 125,115 150,118 C 180,119 220,121 245,121 C 248,124 230,127 180,126 C 130,125 80,124 72,122 Z" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
-                        <!-- Genou fléchi -->
                         <path d="M 160,118 C 185,102 205,108 220,122 C 205,116 185,112 160,118 Z" fill="url(#bodyPink2)" opacity="0.8"/>
                     </g>
-
-                    <!-- Partenaire Chevauchant au-dessus (Silhouette violette) -->
                     <g filter="url(#glow)">
                         <circle cx="132" cy="36" r="10" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
-                        <!-- Buste redressé & Hanches -->
                         <path d="M 132,46 C 130,62 134,82 140,102 C 148,110 162,116 150,122 C 135,120 126,108 124,88 C 122,68 124,52 132,46 Z" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
-                        <!-- Bras prenant appui -->
                         <path d="M 128,58 C 112,74 98,90 92,112 C 98,112 110,96 126,72 Z" fill="url(#bodyPurple2)"/>
-                        <!-- Cuisses repliées de part et d'autre -->
                         <path d="M 140,102 C 158,110 182,118 195,124 C 180,125 160,120 145,115 Z" fill="url(#bodyPurple2)" opacity="0.85"/>
                     </g>
                 </svg>`
@@ -447,12 +406,10 @@
                 tip: "Murmurez des confessions au creux de l'oreille pendant la caresse.",
                 svg: `<svg viewBox="0 0 300 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
                     <ellipse cx="150" cy="95" rx="95" ry="30" fill="rgba(157, 78, 221, 0.08)"/>
-                    <!-- Partenaire 1 Allongé (Rosé) -->
                     <g filter="url(#glow)">
                         <circle cx="70" cy="78" r="10" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
                         <path d="M 79,81 C 105,82 145,86 175,94 C 205,102 235,115 250,120 C 242,124 200,112 165,102 C 130,92 90,88 77,85 Z" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
                     </g>
-                    <!-- Partenaire 2 Enlacé en ciseau (Violet) -->
                     <g filter="url(#glow)">
                         <circle cx="92" cy="58" r="10" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
                         <path d="M 100,64 C 125,72 160,88 190,102 C 215,114 238,122 245,122 C 238,125 210,118 180,105 C 145,90 115,75 97,68 Z" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
@@ -467,12 +424,10 @@
                 tip: "Enlacez la taille de votre partenaire et déposez des baisers le long de sa colonne vertébrale.",
                 svg: `<svg viewBox="0 0 300 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
                     <ellipse cx="150" cy="100" rx="85" ry="25" fill="rgba(255, 42, 117, 0.07)"/>
-                    <!-- Partenaire Intérieur (Silhouette violette) -->
                     <g filter="url(#glow)">
                         <circle cx="190" cy="70" r="10" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
                         <path d="M 182,75 C 152,78 120,88 90,108 C 115,118 155,120 190,118 C 182,105 160,98 180,82 Z" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
                     </g>
-                    <!-- Partenaire Extérieur (Silhouette rose) -->
                     <g filter="url(#glow)">
                         <circle cx="212" cy="64" r="10" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
                         <path d="M 204,69 C 172,72 138,82 108,104 C 132,116 175,118 208,115 C 200,100 180,92 202,76 Z" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
@@ -487,12 +442,10 @@
                 tip: "Laissez la tête basculer doucement en arrière pour amplifier les sensations.",
                 svg: `<svg viewBox="0 0 300 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
                     <ellipse cx="140" cy="118" rx="35" ry="10" fill="rgba(157, 78, 221, 0.25)" stroke="#9d4edd" stroke-width="1.5" stroke-dasharray="3 3"/>
-                    <!-- Partenaire Allongé Cambré (Rose) -->
                     <g filter="url(#glow)">
                         <circle cx="62" cy="108" r="10" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
                         <path d="M 71,110 Q 105,82 140,102 T 225,122 C 210,125 140,112 70,116 Z" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
                     </g>
-                    <!-- Partenaire au-dessus (Violet) -->
                     <g filter="url(#glow)">
                         <circle cx="165" cy="42" r="10" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
                         <path d="M 165,52 L 152,88 L 122,120 C 135,122 158,108 172,75 Z" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
@@ -507,12 +460,10 @@
                 tip: "Inclinez-vous légèrement vers l'avant pour chercher le soutien des mains ou des genoux.",
                 svg: `<svg viewBox="0 0 300 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
                     <ellipse cx="150" cy="120" rx="90" ry="20" fill="rgba(255, 42, 117, 0.08)"/>
-                    <!-- Partenaire Assis (Rose) -->
                     <g filter="url(#glow)">
                         <circle cx="230" cy="110" r="10" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
                         <path d="M 221,113 L 85,118 C 115,124 195,124 228,118 Z" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
                     </g>
-                    <!-- Partenaire Inversé au-dessus (Violet) -->
                     <g filter="url(#glow)">
                         <circle cx="110" cy="42" r="10" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
                         <path d="M 110,52 C 115,75 125,92 130,118 C 145,116 158,112 142,88 C 130,70 118,58 110,52 Z" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
@@ -600,7 +551,6 @@
             }
         ];
 
-        // --- ÉTAT GLOBAL & AUDIO ENGINE ---
         let audioCtx = null;
         let soundEnabled = true;
         let currentPositionIndex = 0;
@@ -621,7 +571,7 @@
             } else {
                 btn.innerHTML = '<i data-lucide="volume-x" class="w-4 h-4"></i>';
             }
-            lucide.createIcons();
+            if (window.lucide) lucide.createIcons();
         }
 
         function playSoftTone(freq, duration) {
@@ -651,7 +601,7 @@
                 osc.start();
                 osc.stop(audioCtx.currentTime + duration);
             } catch (e) {
-                console.log("Audio not supported or blocked", e);
+                console.log("Audio non disponible", e);
             }
         }
 
@@ -679,7 +629,6 @@
             }
         }
 
-        // --- ONGLET 1 : POSITIONS AVEC DÉBLOCAGE QUOTIDIEN ---
         function getDailyPositionIndex() {
             const now = new Date();
             const dateSeed = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
@@ -747,14 +696,14 @@
 
             if (isFreeExploreMode) {
                 btnNew.classList.remove('hidden');
-                exploreBtn.innerHTML = '<i data-lucide="calendar" class="w-3.5 h-3.5 text-romance-pink"></i> Repasser au Mode Jour';
+                exploreBtn.innerHTML = '<i data-lucide="calendar" class="w-3.5 h-3.5 text-romance-pink"></i> Mode Jour';
                 generateNewPosition();
             } else {
                 btnNew.classList.add('hidden');
                 exploreBtn.innerHTML = '<i data-lucide="lock-open" class="w-3.5 h-3.5 text-romance-gold"></i> Exploration Libérée';
                 updateDailyPosition();
             }
-            lucide.createIcons();
+            if (window.lucide) lucide.createIcons();
         }
 
         function generateNewPosition() {
@@ -779,7 +728,6 @@
             }
         }
 
-        // --- ONGLET 2 : ACTION OU VÉRITÉ ---
         function setAVType(type) {
             currentAVType = type;
             playSoftTone(460, 0.1);
@@ -825,7 +773,6 @@
             container.classList.add('flipped');
         }
 
-        // --- ONGLET 3 : DÉFI QUOTIDIEN ---
         function getDailyDefiIndex() {
             const now = new Date();
             const dateSeed = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
@@ -858,7 +805,7 @@
                 updateDailyDefi();
                 btn.innerHTML = '<i data-lucide="dices" class="w-3.5 h-3.5 text-romance-purple"></i> Tirer au hasard';
             }
-            lucide.createIcons();
+            if (window.lucide) lucide.createIcons();
         }
 
         function generateNewDefi() {
@@ -872,7 +819,6 @@
             document.getElementById('defiTag').innerText = defi.tag;
         }
 
-        // --- FAVORIS DU COUPLE ---
         function saveCurrentFavorite(category) {
             let itemText = "";
             let typeLabel = "";
@@ -930,7 +876,7 @@
                         `;
                     });
                 }
-                lucide.createIcons();
+                if (window.lucide) lucide.createIcons();
                 modal.classList.remove('hidden');
             } else {
                 modal.classList.add('hidden');
@@ -946,7 +892,7 @@
         }
 
         window.onload = () => {
-            lucide.createIcons();
+            if (window.lucide) lucide.createIcons();
             switchTab('positionTab');
             updateDailyPosition();
             updateDailyDefi();
