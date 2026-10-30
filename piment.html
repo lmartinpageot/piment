@@ -14,7 +14,7 @@
                     colors: {
                         romance: {
                             bg: '#0a050d',
-                            card: 'rgba(23, 10, 28, 0.7)',
+                            card: 'rgba(23, 10, 28, 0.75)',
                             pink: '#ff2a75',
                             purple: '#9d4edd',
                             violet: '#3c096c',
@@ -24,7 +24,7 @@
                     boxShadow: {
                         'neon-pink': '0 0 25px rgba(255, 42, 117, 0.35)',
                         'neon-purple': '0 0 25px rgba(157, 78, 221, 0.35)',
-                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.5)'
+                        'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.6)'
                     }
                 }
             }
@@ -55,7 +55,7 @@
 
         /* Glassmorphism Card Style */
         .glass-card {
-            background: rgba(23, 10, 28, 0.65);
+            background: rgba(23, 10, 28, 0.7);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.12);
@@ -112,24 +112,24 @@
     </div>
 
     <!-- EN-TÊTE PRINCIPALE -->
-    <header class="w-full pt-6 pb-4 px-6 text-center z-10 flex flex-col items-center">
+    <header class="w-full pt-6 pb-3 px-6 text-center z-10 flex flex-col items-center">
         <div class="flex items-center justify-between w-full mb-1">
-            <button onclick="toggleSound()" id="soundBtn" class="p-2 rounded-full glass-card text-white/70 hover:text-white transition-all">
+            <button onclick="toggleSound()" id="soundBtn" class="p-2.5 rounded-full glass-card text-white/70 hover:text-white transition-all active:scale-95">
                 <i data-lucide="volume-2" class="w-4 h-4"></i>
             </button>
             <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] tracking-widest text-romance-pink uppercase font-semibold">
                 ✨ Espace Couple Privé
             </div>
-            <button onclick="toggleFavoritesModal()" class="p-2 rounded-full glass-card text-white/70 hover:text-white transition-all relative">
+            <button onclick="toggleFavoritesModal()" class="p-2.5 rounded-full glass-card text-white/70 hover:text-white transition-all relative active:scale-95">
                 <i data-lucide="bookmark" class="w-4 h-4"></i>
-                <span id="favBadge" class="hidden absolute -top-1 -right-1 w-2.5 h-2.5 bg-romance-pink rounded-full"></span>
+                <span id="favBadge" class="hidden absolute -top-1 -right-1 w-2.5 h-2.5 bg-romance-pink rounded-full shadow-neon-pink"></span>
             </button>
         </div>
 
         <h1 class="font-serif-romance text-3xl sm:text-4xl italic text-transparent bg-clip-text bg-gradient-to-r from-white via-pink-200 to-romance-purple font-semibold tracking-wide mt-1">
             Piment & Intimité
         </h1>
-        <p class="text-xs text-white/50 font-light mt-0.5">Votre rituel de désir et de complicité</p>
+        <p class="text-xs text-white/50 font-light mt-0.5">Votre rituel quotidien de désir et de complicité</p>
     </header>
 
     <!-- NAVIGATION PAR ONGLETS -->
@@ -151,37 +151,42 @@
     </nav>
 
     <!-- CONTENU PRINCIPAL DES CATEGORIES -->
-    <main class="w-full px-5 flex-1 flex flex-col justify-center z-10 py-3">
+    <main class="w-full px-5 flex-1 flex flex-col justify-center z-10 py-2">
 
         <!-- ================= ONGLET 1 : POSITION DU JOUR ================= -->
         <section id="positionTab" class="tab-content w-full flex flex-col items-center">
-            <div class="glass-card w-full rounded-3xl p-6 border-white/10 relative overflow-hidden flex flex-col items-center text-center shadow-neon-pink/10">
+            <div class="glass-card w-full rounded-3xl p-5 border-white/10 relative overflow-hidden flex flex-col items-center text-center shadow-neon-pink/10">
                 
-                <!-- Badge d'intensité -->
-                <div class="flex items-center justify-between w-full mb-4">
+                <!-- Badge d'intensité et calendrier -->
+                <div class="flex items-center justify-between w-full mb-3">
                     <span id="posIntensityTag" class="text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider border">
                         Doux & Sensuel
                     </span>
-                    <button onclick="saveCurrentFavorite('position')" class="text-white/40 hover:text-romance-pink transition-colors">
-                        <i data-lucide="heart" class="w-5 h-5"></i>
-                    </button>
+                    <div class="flex items-center gap-2">
+                        <span id="dateBadge" class="text-[10px] font-medium text-white/50 bg-white/5 px-2.5 py-0.5 rounded-full border border-white/10 flex items-center gap-1">
+                            <i data-lucide="calendar" class="w-3 h-3 text-romance-pink"></i> <span id="currentDateText">Aujourd'hui</span>
+                        </span>
+                        <button onclick="saveCurrentFavorite('position')" class="text-white/40 hover:text-romance-pink transition-colors">
+                            <i data-lucide="heart" class="w-5 h-5"></i>
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Titre & Illustration -->
-                <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-romance-pink/20 to-romance-purple/30 border border-white/10 flex items-center justify-center text-romance-pink my-2 shadow-inner">
-                    <i data-lucide="heart-handshake" class="w-8 h-8"></i>
+                <!-- SCHÉMA VECTORIEL ILLUSTRATIF -->
+                <div id="posSvgContainer" class="w-full h-44 rounded-2xl bg-gradient-to-b from-black/40 via-romance-purple/10 to-black/60 border border-white/10 flex items-center justify-center p-3 relative overflow-hidden my-1 shadow-inner">
+                    <!-- Dynamic SVG Illustration Container -->
                 </div>
 
-                <h2 id="posTitle" class="font-serif-romance text-2xl sm:text-3xl text-white italic font-bold my-2">
+                <h2 id="posTitle" class="font-serif-romance text-2xl sm:text-3xl text-white italic font-bold mt-2 mb-1">
                     L'Étreinte du Lotus
                 </h2>
 
-                <p id="posDesc" class="text-xs sm:text-sm text-white/80 leading-relaxed font-light my-2 min-h-[70px] flex items-center justify-center">
+                <p id="posDesc" class="text-xs sm:text-sm text-white/80 leading-relaxed font-light my-1 min-h-[55px] flex items-center justify-center">
                     Assis face à face, enlacés au cœur de la nuit. Une position d'une extrême sensualité favorisant les baisers passionnés et la connexion des regards.
                 </p>
 
                 <!-- Astuce complicité -->
-                <div class="w-full bg-white/5 border border-white/5 rounded-2xl p-3 my-3 text-left">
+                <div class="w-full bg-white/5 border border-white/5 rounded-2xl p-3 my-2 text-left">
                     <p class="text-[10px] uppercase font-semibold text-romance-pink flex items-center gap-1">
                         <i data-lucide="sparkle" class="w-3 h-3"></i> Conseil Sensuel
                     </p>
@@ -190,8 +195,23 @@
                     </p>
                 </div>
 
-                <button onclick="generateNewPosition()" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-romance-pink to-romance-purple text-white text-xs font-semibold tracking-wider uppercase shadow-neon-pink transition-all active:scale-98 flex items-center justify-center gap-2 mt-1">
-                    <i data-lucide="refresh-cw" class="w-4 h-4"></i> Découvrir une autre position
+                <!-- Compte à rebours de déblocage quotidien -->
+                <div class="w-full bg-gradient-to-r from-romance-purple/20 to-romance-pink/20 border border-romance-pink/30 rounded-2xl p-3 my-1 flex items-center justify-between text-left">
+                    <div>
+                        <p class="text-[10px] uppercase font-bold text-romance-pink flex items-center gap-1">
+                            <i data-lucide="clock" class="w-3 h-3"></i> Prochaine Position
+                        </p>
+                        <p id="nextPositionTimer" class="text-xs font-mono font-bold text-white mt-0.5">
+                            --h --m --s
+                        </p>
+                    </div>
+                    <button onclick="toggleRandomMode()" id="exploreBtn" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-[10px] font-semibold transition-all border border-white/10 flex items-center gap-1">
+                        <i data-lucide="lock-open" class="w-3.5 h-3.5 text-romance-gold"></i> Exploration Libérée
+                    </button>
+                </div>
+
+                <button id="btnNewPos" onclick="generateNewPosition()" class="hidden w-full py-3 rounded-2xl bg-gradient-to-r from-romance-pink to-romance-purple text-white text-xs font-semibold tracking-wider uppercase shadow-neon-pink transition-all active:scale-98 flex items-center justify-center gap-2 mt-2">
+                    <i data-lucide="refresh-cw" class="w-4 h-4"></i> Tirer une position au hasard
                 </button>
             </div>
         </section>
@@ -200,7 +220,7 @@
         <section id="avTab" class="tab-content w-full hidden flex-col items-center">
             
             <!-- Sélecteur à 2 choix -->
-            <div class="w-full grid grid-cols-2 gap-2 mb-4">
+            <div class="w-full grid grid-cols-2 gap-2 mb-3">
                 <button onclick="setAVType('action')" id="btnTypeAction" class="py-2.5 rounded-2xl glass-card text-xs font-semibold transition-all flex items-center justify-center gap-2 border-romance-pink/50 text-white shadow-neon-pink/20">
                     <i data-lucide="flame" class="w-4 h-4 text-romance-pink"></i> Action (Piment)
                 </button>
@@ -210,7 +230,7 @@
             </div>
 
             <!-- Carte interactive 3D à retourner -->
-            <div class="flip-container w-full h-72 sm:h-80 cursor-pointer" id="avCardContainer" onclick="drawAVCard()">
+            <div class="flip-container w-full h-68 sm:h-72 cursor-pointer" id="avCardContainer" onclick="drawAVCard()">
                 <div class="flip-card">
                     <!-- Face Avant (Masquée) -->
                     <div class="flip-front glass-card p-6 flex flex-col items-center justify-center text-center border-white/15">
@@ -222,12 +242,12 @@
                     </div>
 
                     <!-- Face Arrière (Révélée) -->
-                    <div class="flip-back glass-card p-6 flex flex-col items-center justify-between text-center border-romance-pink/30 shadow-neon-pink/20">
+                    <div class="flip-back glass-card p-5 flex flex-col items-center justify-between text-center border-romance-pink/30 shadow-neon-pink/20">
                         <div class="flex items-center justify-between w-full text-xs">
                             <span id="avCategoryLabel" class="text-[10px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider bg-romance-pink/20 text-romance-pink border border-romance-pink/30">
                                 Action
                             </span>
-                            <button onclick="event.stopPropagation(); saveCurrentFavorite('av');" class="text-white/40 hover:text-romance-pink transition-colors">
+                            <button onclick="event.stopPropagation(); saveCurrentFavorite('av');" class="text-white/40 hover:text-romance-pink transition-colors p-1" title="Ajouter aux favoris">
                                 <i data-lucide="heart" class="w-4 h-4"></i>
                             </button>
                         </div>
@@ -241,20 +261,20 @@
                 </div>
             </div>
 
-            <button onclick="drawAVCard()" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-romance-purple to-romance-pink text-white text-xs font-semibold tracking-wider uppercase shadow-neon-purple transition-all active:scale-98 flex items-center justify-center gap-2 mt-4">
+            <button onclick="drawAVCard()" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-romance-purple to-romance-pink text-white text-xs font-semibold tracking-wider uppercase shadow-neon-purple transition-all active:scale-98 flex items-center justify-center gap-2 mt-3">
                 <i data-lucide="sparkles" class="w-4 h-4"></i> Piocher une carte
             </button>
         </section>
 
         <!-- ================= ONGLET 3 : DÉFI QUOTIDIEN ================= -->
         <section id="defiTab" class="tab-content w-full hidden flex-col items-center">
-            <div class="glass-card w-full rounded-3xl p-6 border-white/10 relative overflow-hidden flex flex-col items-center text-center shadow-neon-purple/10">
+            <div class="glass-card w-full rounded-3xl p-5 border-white/10 relative overflow-hidden flex flex-col items-center text-center shadow-neon-purple/10">
                 
-                <div class="flex items-center justify-between w-full mb-4">
+                <div class="flex items-center justify-between w-full mb-3">
                     <span id="defiTag" class="text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider bg-romance-purple/20 text-romance-purple border border-romance-purple/30">
                         Préliminaires à distance
                     </span>
-                    <button onclick="saveCurrentFavorite('defi')" class="text-white/40 hover:text-romance-pink transition-colors">
+                    <button onclick="saveCurrentFavorite('defi')" class="text-white/40 hover:text-romance-pink transition-colors p-1" title="Ajouter aux favoris">
                         <i data-lucide="heart" class="w-5 h-5"></i>
                     </button>
                 </div>
@@ -263,16 +283,16 @@
                     <i data-lucide="send" class="w-8 h-8"></i>
                 </div>
 
-                <h2 id="defiTitle" class="font-serif-romance text-2xl sm:text-3xl text-white italic font-bold my-2">
+                <h2 id="defiTitle" class="font-serif-romance text-2xl text-white italic font-bold my-1">
                     Le SMS Érotique
                 </h2>
 
-                <p id="defiDesc" class="text-xs sm:text-sm text-white/80 leading-relaxed font-light my-2 min-h-[70px] flex items-center justify-center">
+                <p id="defiDesc" class="text-xs text-white/80 leading-relaxed font-light my-1 min-h-[50px] flex items-center justify-center">
                     Envoyez un message coquin à votre partenaire au cours de la journée pour décrire précisément l'envie ou la caresse qui vous attend ce soir.
                 </p>
 
                 <!-- Impact attendu -->
-                <div class="w-full bg-white/5 border border-white/5 rounded-2xl p-3 my-3 text-left">
+                <div class="w-full bg-white/5 border border-white/5 rounded-2xl p-2.5 my-2 text-left">
                     <p class="text-[10px] uppercase font-semibold text-romance-purple flex items-center gap-1">
                         <i data-lucide="zap" class="w-3 h-3"></i> Effet Recherché
                     </p>
@@ -281,9 +301,20 @@
                     </p>
                 </div>
 
-                <button onclick="generateNewDefi()" class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-romance-purple via-pink-600 to-romance-pink text-white text-xs font-semibold tracking-wider uppercase shadow-neon-purple transition-all active:scale-98 flex items-center justify-center gap-2 mt-1">
-                    <i data-lucide="dices" class="w-4 h-4"></i> Générer un autre défi
-                </button>
+                <!-- Compte à rebours du défi du jour -->
+                <div class="w-full bg-gradient-to-r from-romance-purple/20 to-romance-pink/20 border border-romance-purple/30 rounded-2xl p-3 my-1 flex items-center justify-between text-left">
+                    <div>
+                        <p class="text-[10px] uppercase font-bold text-romance-purple flex items-center gap-1">
+                            <i data-lucide="clock" class="w-3 h-3"></i> Prochain Défi
+                        </p>
+                        <p id="nextDefiTimer" class="text-xs font-mono font-bold text-white mt-0.5">
+                            --h --m --s
+                        </p>
+                    </div>
+                    <button onclick="toggleDefiExploreMode()" id="exploreDefiBtn" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-white text-[10px] font-semibold transition-all border border-white/10 flex items-center gap-1">
+                        <i data-lucide="dices" class="w-3.5 h-3.5 text-romance-purple"></i> Tirer au hasard
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -291,12 +322,12 @@
 
     <!-- MODAL : FAVORIS DU COUPLE -->
     <div id="favoritesModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-5">
-        <div class="glass-card max-w-sm w-full rounded-3xl p-6 border-white/20 max-h-[80vh] flex flex-col justify-between">
+        <div class="glass-card max-w-sm w-full rounded-3xl p-5 border-white/20 max-h-[80vh] flex flex-col justify-between">
             <div class="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
                 <h3 class="font-serif-romance text-xl text-white italic font-semibold flex items-center gap-2">
                     <i data-lucide="bookmark" class="w-5 h-5 text-romance-pink"></i> Vos Préférés
                 </h3>
-                <button onclick="toggleFavoritesModal()" class="text-white/60 hover:text-white">
+                <button onclick="toggleFavoritesModal()" class="text-white/60 hover:text-white p-1">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
             </div>
@@ -312,160 +343,420 @@
     </div>
 
     <!-- PIED DE PAGE -->
-    <footer class="w-full py-4 text-center z-10 text-[11px] text-white/30 font-light">
+    <footer class="w-full py-3 text-center z-10 text-[11px] text-white/30 font-light">
         Piment & Intimité • Créé avec amour pour votre couple
     </footer>
 
     <!-- LOGIQUE JAVASCRIPT & BANQUE DE DONNÉES -->
     <script>
-        // --- BASE DE DONNÉES SENSUELLE ET RAFFINÉE ---
+        // --- BASE DE DONNÉES SENSUELLE AVEC SILHOUETTES HUMAINES ANATOMIQUES ---
         const POSITIONS = [
             {
                 title: "L'Étreinte du Lotus",
                 intensity: "soft",
                 intensityLabel: "Doux & Sensuel",
-                desc: "Assis face à face, enlacés au cœur de la nuit. Une position d'une extrême sensualité favorisant les baisers passionnés et la connexion des regards.",
-                tip: "Maintenez un rythme lent et respirez à l'unisson pour intensifier chaque frisson."
+                desc: "Assis face à face, jambes enlacées. Une position d'une extrême sensualité favorisant les baisers passionnés et la connexion totale des yeux.",
+                tip: "Maintenez un rythme lent et respirez à l'unisson pour intensifier chaque frisson.",
+                svg: `<svg viewBox="0 0 300 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bodyPink" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#ff2a75" stop-opacity="0.9"/>
+                            <stop offset="100%" stop-color="#9d4edd" stop-opacity="0.6"/>
+                        </linearGradient>
+                        <linearGradient id="bodyPurple" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#e0aaff" stop-opacity="0.9"/>
+                            <stop offset="100%" stop-color="#7b2cbf" stop-opacity="0.6"/>
+                        </linearGradient>
+                        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                            <feGaussianBlur stdDeviation="2.5" result="blur" />
+                            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+                        </filter>
+                    </defs>
+                    <ellipse cx="150" cy="120" rx="95" ry="25" fill="rgba(157,78,221,0.1)"/>
+                    
+                    <!-- Partenaire 1 (Assis dos/profil gauche, silhouette rose) -->
+                    <g filter="url(#glow)">
+                        <!-- Tête & Cou -->
+                        <circle cx="118" cy="40" r="11" fill="url(#bodyPink)" stroke="#ff2a75" stroke-width="1.5"/>
+                        <!-- Buste & Dos -->
+                        <path d="M 118,51 C 112,65 106,85 102,108 C 110,122 135,128 152,126 C 145,110 132,95 125,75 C 122,65 122,55 118,51 Z" fill="url(#bodyPink)" stroke="#ff2a75" stroke-width="1.5"/>
+                        <!-- Bras enlaçant -->
+                        <path d="M 120,62 C 132,68 145,68 155,62 C 158,68 148,76 132,74 Z" fill="url(#bodyPink)"/>
+                        <!-- Jambe repliée -->
+                        <path d="M 102,108 C 85,115 72,122 88,128 C 110,132 135,130 152,126 Z" fill="url(#bodyPink)" opacity="0.85"/>
+                    </g>
+
+                    <!-- Partenaire 2 (Enlacé face/profil droit, silhouette violette) -->
+                    <g filter="url(#glow)">
+                        <!-- Tête & Cou -->
+                        <circle cx="146" cy="38" r="10.5" fill="url(#bodyPurple)" stroke="#e0aaff" stroke-width="1.5"/>
+                        <!-- Buste & Dos -->
+                        <path d="M 146,48 C 152,60 160,80 156,104 C 142,120 120,126 106,122 C 118,105 128,88 135,68 C 140,58 142,52 146,48 Z" fill="url(#bodyPurple)" stroke="#e0aaff" stroke-width="1.5"/>
+                        <!-- Bras autour du cou -->
+                        <path d="M 140,58 C 128,58 118,52 112,46 C 115,54 128,66 142,66 Z" fill="url(#bodyPurple)"/>
+                        <!-- Cuisses/Jambes enlacées autour du bassin -->
+                        <path d="M 156,104 C 172,112 182,118 168,124 C 145,128 122,125 106,122 Z" fill="url(#bodyPurple)" opacity="0.85"/>
+                    </g>
+                </svg>`
             },
             {
                 title: "L'Amazonienne",
                 intensity: "medium",
                 intensityLabel: "Modéré & Captivant",
-                desc: "Un partenaire allongé sur le dos, l'autre chevauchant en lui faisant face. Un contrôle poétique de l'intensité et une profondeur enveloppante.",
-                tip: "Laissez les mains caresser le torse et les épaules pour accentuer le plaisir visuel."
-            },
-            {
-                title: "L'Arc de Volupté",
-                intensity: "passionate",
-                intensityLabel: "Passionné & Profond",
-                desc: "Un coussin placé sous les hanches pour surélever le bassin. Une posture qui offre une sensation d'abandon total et une stimulation démultipliée.",
-                tip: "Inclinez doucement le buste en arrière pour étirer la sensation d'extase."
+                desc: "Un partenaire allongé confortablement sur le dos, l'autre chevauchant au-dessus en lui faisant face. Offre un contrôle poétique de la cadence.",
+                tip: "Posez vos mains sur le torse ou les cuisses de votre partenaire pour accentuer le plaisir visuel.",
+                svg: `<svg viewBox="0 0 300 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bodyPink2" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#ff2a75" stop-opacity="0.9"/>
+                            <stop offset="100%" stop-color="#9d4edd" stop-opacity="0.6"/>
+                        </linearGradient>
+                        <linearGradient id="bodyPurple2" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#e0aaff" stop-opacity="0.95"/>
+                            <stop offset="100%" stop-color="#7b2cbf" stop-opacity="0.7"/>
+                        </linearGradient>
+                    </defs>
+                    <ellipse cx="150" cy="125" rx="100" ry="20" fill="rgba(255,42,117,0.08)"/>
+                    
+                    <!-- Partenaire Allongé sur le dos (Silhouette rose) -->
+                    <g filter="url(#glow)">
+                        <circle cx="65" cy="115" r="10.5" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
+                        <!-- Torse, Bassin & Jambes allongées -->
+                        <path d="M 75,116 C 95,114 125,115 150,118 C 180,119 220,121 245,121 C 248,124 230,127 180,126 C 130,125 80,124 72,122 Z" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
+                        <!-- Genou fléchi -->
+                        <path d="M 160,118 C 185,102 205,108 220,122 C 205,116 185,112 160,118 Z" fill="url(#bodyPink2)" opacity="0.8"/>
+                    </g>
+
+                    <!-- Partenaire Chevauchant au-dessus (Silhouette violette) -->
+                    <g filter="url(#glow)">
+                        <circle cx="132" cy="36" r="10" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
+                        <!-- Buste redressé & Hanches -->
+                        <path d="M 132,46 C 130,62 134,82 140,102 C 148,110 162,116 150,122 C 135,120 126,108 124,88 C 122,68 124,52 132,46 Z" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
+                        <!-- Bras prenant appui -->
+                        <path d="M 128,58 C 112,74 98,90 92,112 C 98,112 110,96 126,72 Z" fill="url(#bodyPurple2)"/>
+                        <!-- Cuisses repliées de part et d'autre -->
+                        <path d="M 140,102 C 158,110 182,118 195,124 C 180,125 160,120 145,115 Z" fill="url(#bodyPurple2)" opacity="0.85"/>
+                    </g>
+                </svg>`
             },
             {
                 title: "Le Ciseau d'Ambre",
                 intensity: "soft",
                 intensityLabel: "Doux & Enveloppant",
-                desc: "Allongés sur le côté, vos jambes s'entrelacent délicatement. Idéal pour une nuit de tendresse prolongée et des caresses sans fin.",
-                tip: "Murmurez des mots doux au creux du cou pendant tout le mouvement."
+                desc: "Allongés sur le côté, les corps se croisent délicatement comme des ciseaux. Permet un contact continu de la peau et des baisers doux.",
+                tip: "Murmurez des confessions au creux de l'oreille pendant la caresse.",
+                svg: `<svg viewBox="0 0 300 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="150" cy="95" rx="95" ry="30" fill="rgba(157, 78, 221, 0.08)"/>
+                    <!-- Partenaire 1 Allongé (Rosé) -->
+                    <g filter="url(#glow)">
+                        <circle cx="70" cy="78" r="10" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
+                        <path d="M 79,81 C 105,82 145,86 175,94 C 205,102 235,115 250,120 C 242,124 200,112 165,102 C 130,92 90,88 77,85 Z" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
+                    </g>
+                    <!-- Partenaire 2 Enlacé en ciseau (Violet) -->
+                    <g filter="url(#glow)">
+                        <circle cx="92" cy="58" r="10" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
+                        <path d="M 100,64 C 125,72 160,88 190,102 C 215,114 238,122 245,122 C 238,125 210,118 180,105 C 145,90 115,75 97,68 Z" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
+                    </g>
+                </svg>`
             },
             {
-                title: "La Vague Céleste",
+                title: "La Cuillère Inversée",
+                intensity: "soft",
+                intensityLabel: "Intime & Protecteur",
+                desc: "Nid douillet de nuit, l'un blotti contre le dos de l'autre. Une communion physique tout en pudeur et en chaleur.",
+                tip: "Enlacez la taille de votre partenaire et déposez des baisers le long de sa colonne vertébrale.",
+                svg: `<svg viewBox="0 0 300 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="150" cy="100" rx="85" ry="25" fill="rgba(255, 42, 117, 0.07)"/>
+                    <!-- Partenaire Intérieur (Silhouette violette) -->
+                    <g filter="url(#glow)">
+                        <circle cx="190" cy="70" r="10" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
+                        <path d="M 182,75 C 152,78 120,88 90,108 C 115,118 155,120 190,118 C 182,105 160,98 180,82 Z" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
+                    </g>
+                    <!-- Partenaire Extérieur (Silhouette rose) -->
+                    <g filter="url(#glow)">
+                        <circle cx="212" cy="64" r="10" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
+                        <path d="M 204,69 C 172,72 138,82 108,104 C 132,116 175,118 208,115 C 200,100 180,92 202,76 Z" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
+                    </g>
+                </svg>`
+            },
+            {
+                title: "L'Arc de Volupté",
                 intensity: "passionate",
-                intensityLabel: "Passionné & Électrique",
-                desc: "Debout contre un support ou au bord du lit, la complicité physique est totale. Une expérience intense réservée aux élans d'impatience.",
-                tip: "Variez les pressions et gardez les mains fermement ancrées dans la taille de votre partenaire."
+                intensityLabel: "Passionné & Profond",
+                desc: "Un coussin douillet placé sous les hanches pour cambrer délicatement le bassin. Une posture d'abandon total et d'extase tactile.",
+                tip: "Laissez la tête basculer doucement en arrière pour amplifier les sensations.",
+                svg: `<svg viewBox="0 0 300 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="140" cy="118" rx="35" ry="10" fill="rgba(157, 78, 221, 0.25)" stroke="#9d4edd" stroke-width="1.5" stroke-dasharray="3 3"/>
+                    <!-- Partenaire Allongé Cambré (Rose) -->
+                    <g filter="url(#glow)">
+                        <circle cx="62" cy="108" r="10" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
+                        <path d="M 71,110 Q 105,82 140,102 T 225,122 C 210,125 140,112 70,116 Z" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
+                    </g>
+                    <!-- Partenaire au-dessus (Violet) -->
+                    <g filter="url(#glow)">
+                        <circle cx="165" cy="42" r="10" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
+                        <path d="M 165,52 L 152,88 L 122,120 C 135,122 158,108 172,75 Z" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
+                    </g>
+                </svg>`
+            },
+            {
+                title: "La Chevauchée Céleste",
+                intensity: "passionate",
+                intensityLabel: "Électrique & Ardent",
+                desc: "Face dos à son partenaire, en posture assise ou inversée. Offre une perspective visuelle envoûtante et une liberté totale.",
+                tip: "Inclinez-vous légèrement vers l'avant pour chercher le soutien des mains ou des genoux.",
+                svg: `<svg viewBox="0 0 300 160" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="150" cy="120" rx="90" ry="20" fill="rgba(255, 42, 117, 0.08)"/>
+                    <!-- Partenaire Assis (Rose) -->
+                    <g filter="url(#glow)">
+                        <circle cx="230" cy="110" r="10" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
+                        <path d="M 221,113 L 85,118 C 115,124 195,124 228,118 Z" fill="url(#bodyPink2)" stroke="#ff2a75" stroke-width="1.5"/>
+                    </g>
+                    <!-- Partenaire Inversé au-dessus (Violet) -->
+                    <g filter="url(#glow)">
+                        <circle cx="110" cy="42" r="10" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
+                        <path d="M 110,52 C 115,75 125,92 130,118 C 145,116 158,112 142,88 C 130,70 118,58 110,52 Z" fill="url(#bodyPurple2)" stroke="#e0aaff" stroke-width="1.5"/>
+                    </g>
+                </svg>`
             }
         ];
 
         const ACTIONS = [
-            "Bandez doucement les yeux de votre partenaire et effleurez sa peau avec une plume ou le bout de vos doigts pendant 2 minutes.",
-            "Déposez 5 baisers volés sur 5 zones érogènes différentes, en prenant le temps de chuchoter un désir à chaque fois.",
-            "Réalisez un massage lent des épaules et du bas du dos en utilisant uniquement le bout de vos lèvres.",
-            "Enlevez un vêtement de votre partenaire très lentement, sans utiliser vos mains.",
-            "Tracez du bout des doigts le contour du corps de votre partenaire en suivant le rythme de sa respiration."
+            "Fais un massage très lent de 3 minutes du cou jusqu'au bas du dos.",
+            "Murmure ton désir le plus secret à l'oreille de ton/ta partenaire.",
+            "Retire un vêtement de ton partenaire uniquement avec tes dents.",
+            "Donne 5 baisers doux sur 5 zones érogènes différentes.",
+            "Bande les yeux de ton/ta partenaire pendant 2 minutes et effleure sa peau avec tes doigts.",
+            "Dessine des formes ou des lettres invisibles sur le torse ou la cuisse de ton/ta partenaire et fais-lui deviner.",
+            "Embrasse ton/ta partenaire dans le cou pendant 30 secondes sans bouger les mains.",
+            "Effleure les lèvres de ton/ta partenaire avec ton doigt puis avec un glaçon ou ton souffle chaud.",
+            "Maintiens ton/ta partenaire gentiment immobile par les poignets et embrasse-le/la passionnément.",
+            "Donne un massage des pieds ou des mollets ultra-relaxant pendant 2 minutes.",
+            "Fais glisser un vêtement ou un morceau de tissu le long de ses jambes très lentement.",
+            "Caresse le bas du ventre de ton/ta partenaire en évitant volontairement les zones intimes.",
+            "Propose un effeuillage (strip-tease) improvisé de 45 secondes sur une musique imaginaire.",
+            "Mordille doucement le lobe d'oreille de ton/ta partenaire puis souffle une caresse.",
+            "Fais vivre à ton/ta partenaire un baiser de cinéma ultra-passionné d'au moins 20 secondes.",
+            "Ferme les yeux et laisse ton/ta partenaire guider tes mains où il/elle le souhaite pendant 1 minute.",
+            "Dépose un baiser langoureux et lent le long de sa colonne vertébrale.",
+            "Prends le contrôle absolu de la situation pendant les 3 prochaines minutes.",
+            "Passe tes doigts dans ses cheveux en le/la regardant intensément dans les yeux.",
+            "Fais-lui un compliment osé sur son corps en touchant la zone en question."
         ];
 
         const VERITES = [
-            "Quelle est la partie du corps de votre partenaire qui vous donne le plus de frissons au premier regard ?",
-            "Racontez le souvenir d'un moment intime ensemble qui vous hante encore de manière délicieuse.",
-            "Quel est le fantasme inavoué que vous aimeriez explorer à deux sous les chandelles ?",
-            "Qu'est-ce que votre partenaire fait au lit qui vous fait perdre totalement le contrôle ?",
-            "Si vous deviez choisir un lieu secret et inhabituel pour un baiser passionné, quel serait-il ?"
+            "Quelle zone du corps de ton/ta partenaire t'excite le plus en secret ?",
+            "Quel est ton plus beau souvenir érotique partagé avec ton/ta partenaire ?",
+            "Si toutes les limites s'effaçaient, quel endroit rêverais-tu d'explorer ensemble ?",
+            "Quel geste ou mot de ton/ta partenaire te fait fondre instantanément ?",
+            "Quel est le rêve le plus coquin que tu as fait récemment ?",
+            "Quelle tenue ou sous-vêtement porté par ton/ta partenaire te rend complètement fou/folle ?",
+            "Y a-t-il un endroit insolite dans la maison où tu n'as jamais osé proposer de faire l'amour ?",
+            "Quel est le scénario ou jeu de rôle qui te plairait d'essayer une fois ?",
+            "Qu'est-ce que ton/ta partenaire fait pendant les préliminaires qui te donne des frissons à chaque fois ?",
+            "Quel baiser partagé entre vous t'a le plus marqué depuis le début de votre relation ?",
+            "Quel accessoire, objet ou huile aimerais-tu intégrer à vos moments intimes ?",
+            "Quelle est la première chose que tu as remarquée chez ton/ta partenaire qui t'a attiré physiquement ?",
+            "À quel moment de la journée ton désir pour ton/ta partenaire est-il le plus fort ?",
+            "Quel compliment érotique ou sensuel n'as-tu encore jamais osé lui dire ?",
+            "Quelle est ta position préférée pour atteindre un plaisir maximal et pourquoi ?",
+            "Aimes-tu plutôt prendre les devants ou laisser ton/ta partenaire mener la danse ?",
+            "Quel détail tactile (température, voix, parfum, regard) décuple le plus ton excitation ?",
+            "Qu'aimerais-tu que l'on fasse plus souvent ou plus longtemps au lit ?",
+            "As-tu déjà eu une envie soudaine et coquine pour ton/ta partenaire en plein lieu public ?",
+            "Raconte la sensation exacte que tu ressens quand ton/ta partenaire te prend dans ses bras."
         ];
 
         const DEFIS = [
             {
                 title: "Le SMS Érotique",
-                tag: "Distance & Désir",
-                desc: "Envoyez un message coquin à votre partenaire au cours de la journée pour décrire précisément le désir qui vous attend ce soir.",
-                impact: "Faire monter la température tout au long de la journée avant les retrouvailles."
+                desc: "Envoyez un message coquin à votre partenaire au cours de la journée pour décrire précisément l'envie ou la caresse qui vous attend ce soir.",
+                impact: "Faire monter la température tout au long de la journée avant de vous retrouver.",
+                tag: "Préliminaires"
             },
             {
-                title: "Le Regard Ininterrompu",
-                tag: "Connexion Sensuelle",
-                desc: "Plongez vos yeux dans ceux de votre partenaire pendant 60 secondes chrono, en silence, avant de vous accorder le moindre baiser.",
-                impact: "Créer une tension érotique immédiate et magnétique."
+                title: "Regard Interdit",
+                desc: "Plongez dans les yeux de l'autre pendant 60 secondes complètes sans parler avant d'échanger le moindre baiser.",
+                impact: "Créer une tension électrisante et une connexion intime profonde.",
+                tag: "Sensualité"
             },
             {
-                title: "Le Jeu du Silence",
-                tag: "Intensité Tactile",
-                desc: "Pendant les 10 premières minutes de votre moment intime, aucun mot n'est autorisé. Seuls les soupirs et les caresses s'expriment.",
-                impact: "Aiguiser l'ouïe et le toucher pour ressentir chaque parcelle de peau."
+                title: "Le Secret du Toucher",
+                desc: "Explorez la peau de votre partenaire pendant 10 minutes en utilisant uniquement le bout de vos doigts ou une plume.",
+                impact: "Éveiller la sensibilité de chaque terminaison nerveuse.",
+                tag: "Douceur"
             },
             {
-                title: "L'Éclairage à la Bougie",
-                tag: "Ambiance & Ombrages",
-                desc: "Éteignez toutes les lumières artificielles et n'utilisez qu'une seule bougie pour éclairer vos corps ce soir.",
-                tagText: "Mettre en valeur les courbes et la douceur du grain de peau."
+                title: "L'Ambiance Tamisée",
+                desc: "Préparez la chambre en éteignant toutes les lumières et en allumant une unique bougie parfumée avant le rendez-vous.",
+                impact: "Plonger immédiatement vos sens dans un cocon de volupté.",
+                tag: "Atmosphère"
+            },
+            {
+                title: "Le Jeu du Chuchotement",
+                desc: "Pendant les 15 premières minutes de vos retrouvailles, exprimez chaque envie uniquement en chuchotant au creux de l'oreille.",
+                impact: "Décupler le frisson auditif et l'anticipation du désir.",
+                tag: "Complicité"
             }
         ];
 
-        // --- ÉTAT DE L'APPLICATION ---
-        let currentTab = 'positionTab';
-        let currentAVType = 'action';
-        let currentPositionIndex = 0;
-        let currentDefiIndex = 0;
-        let currentAVText = '';
-        let favorites = JSON.parse(localStorage.getItem('piment_favorites') || '[]');
+        // --- ÉTAT GLOBAL & AUDIO ENGINE ---
+        let audioCtx = null;
         let soundEnabled = true;
-
-        // --- INITIALISATION ---
-        window.onload = () => {
-            lucide.createIcons();
-            switchTab('positionTab');
-            generateNewPosition();
-            generateNewDefi();
-            updateFavBadge();
-        };
-
-        // --- GESTION AUDIO SYNTHÉTIQUE ---
-        function playSoftTone(freq = 440, duration = 0.15) {
-            if (!soundEnabled) return;
-            try {
-                const ctx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = ctx.createOscillator();
-                const gain = ctx.createGain();
-
-                osc.type = 'sine';
-                osc.frequency.setValueAtTime(freq, ctx.currentTime);
-                gain.gain.setValueAtTime(0.05, ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
-
-                osc.connect(gain);
-                gain.connect(ctx.destination);
-
-                osc.start();
-                osc.stop(ctx.currentTime + duration);
-            } catch (e) {}
-        }
+        let currentPositionIndex = 0;
+        let currentAVType = 'action';
+        let currentAVText = '';
+        let currentDefiIndex = 0;
+        let favorites = JSON.parse(localStorage.getItem('piment_favorites') || '[]');
+        let isFreeExploreMode = false;
+        let isDefiExploreMode = false;
+        let timerInterval = null;
 
         function toggleSound() {
             soundEnabled = !soundEnabled;
             const btn = document.getElementById('soundBtn');
-            btn.innerHTML = soundEnabled ? '<i data-lucide="volume-2" class="w-4 h-4"></i>' : '<i data-lucide="volume-x" class="w-4 h-4 text-romance-pink"></i>';
+            if (soundEnabled) {
+                btn.innerHTML = '<i data-lucide="volume-2" class="w-4 h-4"></i>';
+                playSoftTone(600, 0.1);
+            } else {
+                btn.innerHTML = '<i data-lucide="volume-x" class="w-4 h-4"></i>';
+            }
             lucide.createIcons();
-            if (soundEnabled) playSoftTone(520, 0.1);
         }
 
-        // --- NAVIGATION ONGLETS ---
+        function playSoftTone(freq, duration) {
+            if (!soundEnabled) return;
+            try {
+                if (!audioCtx) {
+                    const AudioContext = window.AudioContext || window.webkitAudioContext;
+                    if (AudioContext) audioCtx = new AudioContext();
+                }
+                if (audioCtx && audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                if (!audioCtx) return;
+
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch (e) {
+                console.log("Audio not supported or blocked", e);
+            }
+        }
+
         function switchTab(tabId) {
-            currentTab = tabId;
-            playSoftTone(380, 0.1);
-
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            document.getElementById(tabId).classList.remove('hidden');
-
+            playSoftTone(440, 0.08);
             document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('glass-card', 'text-white', 'border-white/20', 'shadow-neon-pink');
+                btn.classList.remove('bg-white/10', 'text-white', 'shadow-neon-pink/20');
                 btn.classList.add('text-white/60');
             });
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+                content.classList.remove('flex');
+            });
 
-            const activeBtn = document.getElementById(`btn-${tabId}`);
-            activeBtn.classList.remove('text-white/60');
-            activeBtn.classList.add('glass-card', 'text-white', 'border-white/20');
+            const activeBtn = document.getElementById('btn-' + tabId);
+            if (activeBtn) {
+                activeBtn.classList.remove('text-white/60');
+                activeBtn.classList.add('bg-white/10', 'text-white', 'shadow-neon-pink/20');
+            }
+
+            const activeTab = document.getElementById(tabId);
+            if (activeTab) {
+                activeTab.classList.remove('hidden');
+                activeTab.classList.add('flex');
+            }
         }
 
-        // --- ONGLET 1 : POSITIONS ---
+        // --- ONGLET 1 : POSITIONS AVEC DÉBLOCAGE QUOTIDIEN ---
+        function getDailyPositionIndex() {
+            const now = new Date();
+            const dateSeed = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
+            return dateSeed % POSITIONS.length;
+        }
+
+        function updateDailyPosition() {
+            if (isFreeExploreMode) return;
+
+            const index = getDailyPositionIndex();
+            currentPositionIndex = index;
+            const pos = POSITIONS[index];
+
+            document.getElementById('posTitle').innerText = pos.title;
+            document.getElementById('posDesc').innerText = pos.desc;
+            document.getElementById('posTip').innerText = pos.tip;
+            document.getElementById('posSvgContainer').innerHTML = pos.svg;
+
+            const tagEl = document.getElementById('posIntensityTag');
+            tagEl.innerText = pos.intensityLabel + " • Du Jour";
+
+            if (pos.intensity === 'soft') {
+                tagEl.className = "text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border-emerald-500/30";
+            } else if (pos.intensity === 'medium') {
+                tagEl.className = "text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider bg-amber-500/20 text-amber-300 border-amber-500/30";
+            } else {
+                tagEl.className = "text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider bg-romance-pink/20 text-romance-pink border-romance-pink/30";
+            }
+
+            const options = { day: 'numeric', month: 'short' };
+            document.getElementById('currentDateText').innerText = new Date().toLocaleDateString('fr-FR', options);
+        }
+
+        function startDailyTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+
+            function updateTimer() {
+                const now = new Date();
+                const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+                const diff = tomorrow - now;
+
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                const timeStr = `${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
+
+                const posTimerEl = document.getElementById('nextPositionTimer');
+                if (posTimerEl) posTimerEl.innerText = timeStr;
+
+                const defiTimerEl = document.getElementById('nextDefiTimer');
+                if (defiTimerEl) defiTimerEl.innerText = timeStr;
+            }
+
+            updateTimer();
+            timerInterval = setInterval(updateTimer, 1000);
+        }
+
+        function toggleRandomMode() {
+            playSoftTone(500, 0.12);
+            isFreeExploreMode = !isFreeExploreMode;
+
+            const btnNew = document.getElementById('btnNewPos');
+            const exploreBtn = document.getElementById('exploreBtn');
+
+            if (isFreeExploreMode) {
+                btnNew.classList.remove('hidden');
+                exploreBtn.innerHTML = '<i data-lucide="calendar" class="w-3.5 h-3.5 text-romance-pink"></i> Repasser au Mode Jour';
+                generateNewPosition();
+            } else {
+                btnNew.classList.add('hidden');
+                exploreBtn.innerHTML = '<i data-lucide="lock-open" class="w-3.5 h-3.5 text-romance-gold"></i> Exploration Libérée';
+                updateDailyPosition();
+            }
+            lucide.createIcons();
+        }
+
         function generateNewPosition() {
             playSoftTone(420, 0.12);
             currentPositionIndex = Math.floor(Math.random() * POSITIONS.length);
@@ -474,6 +765,7 @@
             document.getElementById('posTitle').innerText = pos.title;
             document.getElementById('posDesc').innerText = pos.desc;
             document.getElementById('posTip').innerText = pos.tip;
+            document.getElementById('posSvgContainer').innerHTML = pos.svg;
 
             const tagEl = document.getElementById('posIntensityTag');
             tagEl.innerText = pos.intensityLabel;
@@ -503,7 +795,6 @@
                 btnA.className = "py-2.5 rounded-2xl glass-card text-xs font-semibold transition-all flex items-center justify-center gap-2 border-white/10 text-white/60";
             }
 
-            // Remettre la carte face cachée
             document.getElementById('avCardContainer').classList.remove('flipped');
         }
 
@@ -535,6 +826,41 @@
         }
 
         // --- ONGLET 3 : DÉFI QUOTIDIEN ---
+        function getDailyDefiIndex() {
+            const now = new Date();
+            const dateSeed = now.getFullYear() * 10000 + (now.getMonth() + 1) * 100 + now.getDate();
+            return dateSeed % DEFIS.length;
+        }
+
+        function updateDailyDefi() {
+            if (isDefiExploreMode) return;
+
+            const index = getDailyDefiIndex();
+            currentDefiIndex = index;
+            const defi = DEFIS[index];
+
+            document.getElementById('defiTitle').innerText = defi.title;
+            document.getElementById('defiDesc').innerText = defi.desc;
+            document.getElementById('defiImpact').innerText = defi.impact;
+            document.getElementById('defiTag').innerText = defi.tag + " • Du Jour";
+        }
+
+        function toggleDefiExploreMode() {
+            playSoftTone(480, 0.12);
+            isDefiExploreMode = !isDefiExploreMode;
+
+            const btn = document.getElementById('exploreDefiBtn');
+
+            if (isDefiExploreMode) {
+                generateNewDefi();
+                btn.innerHTML = '<i data-lucide="calendar" class="w-3.5 h-3.5 text-romance-purple"></i> Mode Jour';
+            } else {
+                updateDailyDefi();
+                btn.innerHTML = '<i data-lucide="dices" class="w-3.5 h-3.5 text-romance-purple"></i> Tirer au hasard';
+            }
+            lucide.createIcons();
+        }
+
         function generateNewDefi() {
             playSoftTone(480, 0.12);
             currentDefiIndex = Math.floor(Math.random() * DEFIS.length);
@@ -616,8 +942,17 @@
             localStorage.setItem('piment_favorites', JSON.stringify(favorites));
             updateFavBadge();
             toggleFavoritesModal();
-            toggleFavoritesModal(); // Re-render
+            toggleFavoritesModal();
         }
+
+        window.onload = () => {
+            lucide.createIcons();
+            switchTab('positionTab');
+            updateDailyPosition();
+            updateDailyDefi();
+            startDailyTimer();
+            updateFavBadge();
+        };
     </script>
 </body>
 </html>
